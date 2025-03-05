@@ -1,0 +1,48 @@
+@model TicketModel
+@using Widgets.TicketSystem.Models
+
+@{
+    //page title
+    ViewBag.Title = Loc["Plugins.Widgets.TicketSystem.Ticket.Edit"];
+}
+
+<form asp-controller="TicketSystem" asp-action="Edit" method="post">
+    <input asp-for="Id" type="hidden" />
+    <input asp-for="CreatedOnUtc" type="hidden" />
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="mb-0 d-inline-block">
+                            <i class="fa fa-ticket-alt"></i>
+                            @Loc["Plugins.Widgets.TicketSystem.Ticket.Edit"] - @Model.Subject
+                        </h5>
+                        <a href="@Url.Action("List")" class="btn btn-sm btn-outline-secondary ml-2">
+                            <i class="fa fa-arrow-left"></i> @Loc["Plugins.Widgets.TicketSystem.Ticket.BackToList"]
+                        </a>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-success" type="submit" name="save">
+                            <i class="fa fa-check"></i> @Loc["Admin.Common.Save"]
+                        </button>
+                        <button class="btn btn-info" type="submit" name="save-continue">
+                            <i class="fa fa-check-circle"></i> @Loc["Admin.Common.SaveContinue"]
+                        </button>
+                        <button type="button" id="ticket-delete" class="btn btn-danger">
+                            <i class="fa fa-trash"></i> @Loc["Admin.Common.Delete"]
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <partial name="_CreateOrUpdate" model="Model" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<admin-delete-confirmation button-id="ticket-delete" action-name="Delete" controller-name="TicketSystem" area-name="Admin" />
+
+@await Component.InvokeAsync("AdminWidget", new { widgetZone = "admin_ticket_details_buttons", additionalData = Model.Id }) 

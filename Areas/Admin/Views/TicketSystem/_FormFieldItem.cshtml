@@ -1,0 +1,57 @@
+﻿@model Widgets.TicketSystem.Models.ContactFormFieldModel
+@{
+    var index = (int)ViewData["Index"];
+}
+
+<tr class="form-field-item" data-index="@index">
+    <td>
+        <input type="text" name="FormFields[@index].Name" class="form-control" placeholder="@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.Name.Placeholder"]" />
+        <small class="form-text text-muted">@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.Name.Hint"]</small>
+        <span asp-validation-for="Name" class="text-danger"></span>
+        <input type="hidden" name="FormFields[@index].Id" value="" />
+    </td>
+    <td>
+        <select name="FormFields[@index].FieldType" class="form-control" onchange="toggleFieldOptions(this)">
+            <option value="Text">@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Text"]</option>
+            <option value="TextArea">@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.TextArea"]</option>
+            <option value="Email">@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Email"]</option>
+            <option value="Select">@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Select"]</option>
+            <option value="Checkbox">@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Checkbox"]</option>
+        </select>
+        <small class="form-text text-muted">@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Hint"]</small>
+        <span asp-validation-for="FieldType" class="text-danger"></span>
+        
+        <div class="field-options mt-2" style="display: none">
+            <div class="field-options-container mb-2">
+                <!-- Seçenekler burada dinamik olarak eklenecek -->
+            </div>
+            <button type="button" class="btn btn-sm btn-info" onclick="addFieldOption(this)">
+                <i class="fa fa-plus"></i> @Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldOptions.AddNew"]
+            </button>
+            <small class="form-text text-muted d-block mt-2">@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldOptions.Hint"]</small>
+        </div>
+    </td>
+    <td>
+        <div class="form-check">
+            <input type="checkbox" name="FormFields[@index].IsRequired" value="true" class="form-check-input" id="IsRequired_@index" />
+            <label class="form-check-label" for="IsRequired_@index">@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.IsRequired.Hint"]</label>
+        </div>
+        <span asp-validation-for="IsRequired" class="text-danger"></span>
+        
+        <div class="mt-2">
+            <label>@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.DefaultValue.Hint"]</label>
+            <input type="text" name="FormFields[@index].DefaultValue" class="form-control" placeholder="@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.DefaultValue.Placeholder"]" />
+            <span asp-validation-for="DefaultValue" class="text-danger"></span>
+        </div>
+    </td>
+    <td>
+        <input type="number" name="FormFields[@index].DisplayOrder" value="1" class="form-control" min="1" />
+        <small class="form-text text-muted">@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.DisplayOrder.Hint"]</small>
+        <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+    </td>
+    <td>
+        <button type="button" class="btn btn-danger" onclick="removeFormField(this)">
+            <i class="fa fa-trash"></i> @Loc["Admin.Common.Delete"]
+        </button>
+    </td>
+</tr> 

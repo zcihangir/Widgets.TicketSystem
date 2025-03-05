@@ -1,0 +1,221 @@
+@model TicketListModel
+@using Widgets.TicketSystem.Models
+
+@{
+    //page title
+    ViewBag.Title = Loc["Plugins.Widgets.TicketSystem.Tickets"];
+}
+
+<form asp-controller="TicketSystem" asp-action="List" method="post">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">
+                        <i class="fa fa-ticket-alt"></i>
+                        @Loc["Plugins.Widgets.TicketSystem.Tickets"]
+                    </h5>
+                    <div>
+                        <a href="@Url.Action("Create", "TicketSystem")" class="btn btn-success">
+                            <i class="fa fa-plus"></i>
+                            @Loc["Plugins.Widgets.TicketSystem.Ticket.Create"]
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-horizontal">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <admin-label asp-for="SearchCustomerEmail" class="col-md-4 col-form-label" />
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                                                </div>
+                                                <admin-input asp-for="SearchCustomerEmail" class="form-control" placeholder="@Loc["Plugins.Widgets.TicketSystem.Ticket.List.SearchCustomerEmail.Placeholder"]" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <admin-label asp-for="SearchDepartment" class="col-md-4 col-form-label" />
+                                        <div class="col-md-8">
+                                            <admin-select asp-for="SearchDepartment" asp-items="Model.AvailableDepartments" class="form-control custom-select" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <admin-label asp-for="SearchStatus" class="col-md-4 col-form-label" />
+                                        <div class="col-md-8">
+                                            <admin-select asp-for="SearchStatus" asp-items="Model.AvailableStatuses" class="form-control custom-select" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <admin-label asp-for="SearchPriority" class="col-md-4 col-form-label" />
+                                        <div class="col-md-8">
+                                            <admin-select asp-for="SearchPriority" asp-items="Model.AvailablePriorities" class="form-control custom-select" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button class="btn btn-primary" id="search-tickets">
+                                    <i class="fa fa-search"></i> @Loc["Admin.Common.Search"]
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div id="tickets-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function () {
+        $("#tickets-grid").kendoGrid({
+            dataSource: {
+                transport: {
+                    read: {
+                        url: "@Html.Raw(Url.Action("TicketList", "TicketSystem"))",
+                        type: "POST",
+                        dataType: "json",
+                        data: additionalData
+                    }
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                    errors: "Errors"
+                },
+                error: function(e) {
+                    display_kendoui_grid_error(e);
+                    // Cancel the changes
+                    this.cancelChanges();
+                },
+                pageSize: 20,
+                serverPaging: true,
+                serverFiltering: true,
+                serverSorting: true
+            },
+            pageable: {
+                refresh: true,
+                pageSizes: [5, 10, 20, 50]
+            },
+            editable: {
+                confirmation: false,
+                mode: "inline"
+            },
+            scrollable: false,
+            columns: [{
+                field: "Id",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Ticket.Fields.Id"]",
+                width: 50
+            }, {
+                field: "Subject",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Ticket.Fields.Subject"]",
+                width: 200,
+                template: '<a href="Edit/#=Id#" class="text-primary font-weight-bold">#=Subject#</a>'
+            }, {
+                field: "Department",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Ticket.Fields.Department"]",
+                width: 100
+            }, {
+                field: "Status",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Ticket.Fields.Status"]",
+                width: 100,
+                template: function(dataItem) {
+                    var statusClass = "";
+                    switch(dataItem.Status) {
+                        case "Open":
+                            statusClass = "badge-success";
+                            break;
+                        case "Pending":
+                            statusClass = "badge-warning";
+                            break;
+                        case "Closed":
+                            statusClass = "badge-secondary";
+                            break;
+                        default:
+                            statusClass = "badge-info";
+                    }
+                    return '<span class="badge ' + statusClass + '">' + dataItem.Status + '</span>';
+                }
+            }, {
+                field: "Priority",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Ticket.Fields.Priority"]",
+                width: 100,
+                template: function(dataItem) {
+                    var priorityClass = "";
+                    switch(dataItem.Priority) {
+                        case "High":
+                            priorityClass = "badge-danger";
+                            break;
+                        case "Medium":
+                            priorityClass = "badge-warning";
+                            break;
+                        case "Low":
+                            priorityClass = "badge-info";
+                            break;
+                        default:
+                            priorityClass = "badge-secondary";
+                    }
+                    return '<span class="badge ' + priorityClass + '">' + dataItem.Priority + '</span>';
+                }
+            }, {
+                field: "CustomerEmail",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Ticket.Fields.CustomerEmail"]",
+                width: 150
+            }, {
+                field: "CustomerFullName",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Ticket.Fields.CustomerFullName"]",
+                width: 150
+            }, {
+                field: "StaffName",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Ticket.Fields.StaffName"]",
+                width: 150
+            }, {
+                field: "CreatedOn",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Ticket.Fields.CreatedOn"]",
+                width: 150
+            }, {
+                field: "Id",
+                title: "@Loc["Admin.Common.Edit"]",
+                width: 100,
+                template: '<a class="btn btn-sm btn-outline-primary" href="Edit/#=Id#"><i class="fa fa-pencil-alt"></i> @Loc["Admin.Common.Edit"]</a>'
+            }]
+        });
+    });
+
+    function additionalData() {
+        var data = {
+            SearchCustomerEmail: $('#@Html.IdFor(model => model.SearchCustomerEmail)').val(),
+            SearchDepartment: $('#@Html.IdFor(model => model.SearchDepartment)').val(),
+            SearchStatus: $('#@Html.IdFor(model => model.SearchStatus)').val(),
+            SearchPriority: $('#@Html.IdFor(model => model.SearchPriority)').val(),
+        };
+        addAntiForgeryToken(data);
+        return data;
+    }
+</script> 

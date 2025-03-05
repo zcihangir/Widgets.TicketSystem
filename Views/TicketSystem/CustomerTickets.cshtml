@@ -1,0 +1,77 @@
+@model CustomerTicketsModel
+@using Widgets.TicketSystem.Models
+
+@{
+    Layout = "_SingleColumn";
+    ViewBag.Title = Loc["Plugins.Widgets.TicketSystem.CustomerTickets.Title"];
+}
+
+
+<div class="page account-page ticket-list-page">
+    <h1 class="h2 generalTitle">@Loc["Plugins.Widgets.TicketSystem.CustomerTickets.Title"]</h1>
+    
+    <div class="page-body">
+        <div class="mb-3">
+            <a href="@Url.Action("CreateTicket", "TicketSystem")" class="btn btn-info">
+                <b-icon icon="plus-circle"></b-icon> @Loc["Plugins.Widgets.TicketSystem.CustomerTickets.CreateNew"]
+            </a>
+        </div>
+        
+        @if (Model.Tickets.Count > 0)
+        {
+            <div class="table-responsive">
+                <table class="table table-hover data-table">
+                    <thead>
+                        <tr>
+                            <th>@Loc["Plugins.Widgets.TicketSystem.CustomerTickets.Subject"]</th>
+                            <th>@Loc["Plugins.Widgets.TicketSystem.CustomerTickets.Department"]</th>
+                            <th>@Loc["Plugins.Widgets.TicketSystem.CustomerTickets.Status"]</th>
+                            <th>@Loc["Plugins.Widgets.TicketSystem.CustomerTickets.Priority"]</th>
+                            <th>@Loc["Plugins.Widgets.TicketSystem.CustomerTickets.CreatedOn"]</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var ticket in Model.Tickets)
+                        {
+                            <tr>
+                                <td>@ticket.Subject</td>
+                                <td>@ticket.Department</td>
+                                <td>
+                                    @{
+                                        string statusClass = "badge-secondary";
+                                        if (ticket.Status == "Open") { statusClass = "badge-success"; }
+                                        else if (ticket.Status == "Processing") { statusClass = "badge-warning"; }
+                                        else if (ticket.Status == "Closed") { statusClass = "badge-danger"; }
+                                    }
+                                    <span class="badge @statusClass">@ticket.Status</span>
+                                </td>
+                                <td>
+                                    @{
+                                        string priorityClass = "badge-secondary";
+                                        if (ticket.Priority == "High") { priorityClass = "badge-danger"; }
+                                        else if (ticket.Priority == "Normal") { priorityClass = "badge-info"; }
+                                        else if (ticket.Priority == "Low") { priorityClass = "badge-success"; }
+                                    }
+                                    <span class="badge @priorityClass">@ticket.Priority</span>
+                                </td>
+                                <td>@ticket.CreatedOn</td>
+                                <td>
+                                    <a href="@Url.Action("TicketDetails", "TicketSystem", new { id = ticket.Id })" class="btn btn-sm btn-info">
+                                        <b-icon icon="eye"></b-icon> @Loc["Plugins.Widgets.TicketSystem.CustomerTickets.View"]
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                <b-icon icon="info-circle"></b-icon> @Loc["Plugins.Widgets.TicketSystem.CustomerTickets.NoTickets"]
+            </div>
+        }
+    </div>
+</div> 

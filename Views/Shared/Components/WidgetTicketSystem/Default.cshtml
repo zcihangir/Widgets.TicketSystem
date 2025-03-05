@@ -1,0 +1,121 @@
+@model Widgets.TicketSystem.Models.PublicInfoModel
+
+@if (Model.ContactFormId != null)
+{
+    <div class="contact-form-container">
+        <h2>@Model.ContactFormName</h2>
+        <p>@Model.ContactFormDescription</p>
+
+        <form asp-controller="TicketSystem" asp-action="SubmitContactForm" method="post">
+            <input type="hidden" name="ContactFormId" value="@Model.ContactFormId" />
+
+            @foreach (var field in Model.ContactFormFields.OrderBy(x => x.DisplayOrder))
+            {
+                <div class="form-group">
+                    <label>
+                        @field.Name
+                        @if (field.IsRequired)
+                        {
+                            <span class="required">*</span>
+                        }
+                    </label>
+
+                    @switch (field.FieldType)
+                    {
+                        case "Text":
+                            <input type="text" class="form-control" name="@($"field_{field.Id}")" value="@field.DefaultValue" @(field.IsRequired ? "required" : "") />
+                            break;
+                        case "TextArea":
+                            <textarea class="form-control" name="@($"field_{field.Id}")" rows="4" @(field.IsRequired ? "required" : "")>@field.DefaultValue</textarea>
+                            break;
+                        case "Email":
+                            <input type="email" class="form-control" name="@($"field_{field.Id}")" value="@field.DefaultValue" @(field.IsRequired ? "required" : "") />
+                            break;
+                        case "Number":
+                            <input type="number" class="form-control" name="@($"field_{field.Id}")" value="@field.DefaultValue" @(field.IsRequired ? "required" : "") />
+                            break;
+                        case "Date":
+                            <input type="date" class="form-control" name="@($"field_{field.Id}")" value="@field.DefaultValue" @(field.IsRequired ? "required" : "") />
+                            break;
+                        case "Checkbox":
+                            @if (field.FieldOptions != null && field.FieldOptions.Any())
+                            {
+                                foreach (var option in field.FieldOptions)
+                                {
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="@($"field_{field.Id}")" value="@option" @(field.DefaultValue == option ? "checked" : "") @(field.IsRequired ? "required" : "") />
+                                            @option
+                                        </label>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="@($"field_{field.Id}")" value="true" @(field.DefaultValue == "true" ? "checked" : "") @(field.IsRequired ? "required" : "") />
+                                        @field.Name
+                                    </label>
+                                </div>
+                            }
+                            break;
+                        case "Radio":
+                            @foreach (var option in field.FieldOptions)
+                            {
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="@($"field_{field.Id}")" value="@option" @(field.DefaultValue == option ? "checked" : "") @(field.IsRequired ? "required" : "") />
+                                        @option
+                                    </label>
+                                </div>
+                            }
+                            break;
+                        case "Select":
+                            <select class="form-control" name="@($"field_{field.Id}")" @(field.IsRequired ? "required" : "")>
+                                <option value="">@Loc["Plugins.Widgets.TicketSystem.ContactForm.Field.SelectOption"]</option>
+                                @foreach (var option in field.FieldOptions)
+                                {
+                                    if (field.DefaultValue == option)
+                                    {
+                                        <option value="@option" selected="selected">@option</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@option">@option</option>
+                                    }
+                                }
+                            </select>
+                            break;
+                    }
+                </div>
+            }
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">@Loc["Plugins.Widgets.TicketSystem.ContactForm.Submit"]</button>
+            </div>
+        </form>
+    </div>
+}
+else if (Model.ProductId != null)
+{
+    <div class="product-ticket-container mt-2 mb-2">
+        <a href="@Url.RouteUrl("TicketCreate", new { productId = Model.ProductId })" class="btn btn-info btn-sm">
+            <b-icon icon="ticket-perforated"></b-icon> @Loc["Plugins.Widgets.TicketSystem.Product.CreateTicket.Button"]
+        </a>
+    </div>
+}
+else if (Model.OrderId != null)
+{
+    <div class="order-ticket-container mt-3 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">@Loc["Plugins.Widgets.TicketSystem.Order.CreateTicket"]</h5>
+                <p class="card-text">@Loc["Plugins.Widgets.TicketSystem.Order.CreateTicket.Description"]</p>
+                <a href="@Url.RouteUrl("TicketCreate", new { orderId = Model.OrderId })" class="btn btn-info">
+                    <b-icon icon="ticket-perforated"></b-icon> @Loc["Plugins.Widgets.TicketSystem.Order.CreateTicket.Button"]
+                </a>
+            </div>
+        </div>
+    </div>
+} 

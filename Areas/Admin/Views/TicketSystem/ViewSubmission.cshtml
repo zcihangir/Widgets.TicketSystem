@@ -1,0 +1,131 @@
+@model Widgets.TicketSystem.Models.ContactFormSubmissionModel
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.View.Title"];
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel light form-fit">
+            <div class="x_title">
+                <div class="caption">
+                    <i class="fa fa-eye"></i>
+                    @Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.View.Title"]
+                    <small><i class="fa fa-arrow-circle-left"></i> @Html.ActionLink(Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.List.BackToList"], "SubmissionList")</small>
+                </div>
+                <div class="actions">
+                    <div class="btn-group btn-group-devided">
+                        @if (!Model.ConvertedToTicket)
+                        {
+                            <button type="button" id="convert-to-ticket" class="btn btn-primary">
+                                <i class="fa fa-ticket"></i> @Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.ConvertToTicket"]
+                            </button>
+                        }
+                        <span id="submission-delete" class="btn btn-danger"><i class="fa fa-trash-o"></i> @Loc["Admin.Common.Delete"]</span>
+                    </div>
+                </div>
+            </div>
+            <div class="x_content form">
+                <div class="form-horizontal">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <admin-label asp-for="ContactFormId" />
+                            <div class="col-md-9 col-sm-9">
+                                <label class="control-label">@Model.ContactFormName</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <admin-label asp-for="CustomerEmail" />
+                            <div class="col-md-9 col-sm-9">
+                                <label class="control-label">@Model.CustomerEmail</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <admin-label asp-for="CustomerFullName" />
+                            <div class="col-md-9 col-sm-9">
+                                <label class="control-label">@Model.CustomerFullName</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <admin-label asp-for="CreatedOn" />
+                            <div class="col-md-9 col-sm-9">
+                                <label class="control-label">@Model.CreatedOn</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <admin-label asp-for="ConvertedToTicket" />
+                            <div class="col-md-9 col-sm-9">
+                                <label class="control-label">
+                                    @if (Model.ConvertedToTicket)
+                                    {
+                                        <i class="fa fa-check" style="color:green"></i>
+                                        <text> @Loc["Admin.Common.Yes"]</text>
+                                        if (!string.IsNullOrEmpty(Model.TicketId))
+                                        {
+                                            <text> - </text>
+                                            <a href="@Url.Action("Edit", "TicketSystem", new { id = Model.TicketId })">
+                                                @Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.ViewTicket"]
+                                            </a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-times" style="color:red"></i>
+                                        <text> @Loc["Admin.Common.No"]</text>
+                                    }
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <admin-label asp-for="FormValues" />
+                            <div class="col-md-9 col-sm-9">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>@Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.FormValues.FieldName"]</th>
+                                                <th>@Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.FormValues.FieldValue"]</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.FormValues)
+                                            {
+                                                <tr>
+                                                    <td>@item.Key</td>
+                                                    <td>@item.Value</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form asp-controller="TicketSystem" asp-action="ConvertToTicket" method="post" id="convert-form">
+    <input type="hidden" name="id" value="@Model.Id" />
+</form>
+
+<admin-delete-confirmation button-id="submission-delete" action-name="DeleteSubmission" />
+
+<script>
+    $(document).ready(function() {
+        $('#submission-delete').click(function(e) {
+            e.preventDefault();
+            $('#delete-window').data('id', '@Model.Id').modal('toggle');
+        });
+        
+        $('#convert-to-ticket').click(function(e) {
+            e.preventDefault();
+            if (confirm('@Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.ConvertToTicket.Confirmation"]')) {
+                $('#convert-form').submit();
+            }
+        });
+    });
+</script> 

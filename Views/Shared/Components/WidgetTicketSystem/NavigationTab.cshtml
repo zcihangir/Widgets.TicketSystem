@@ -1,0 +1,11 @@
+@model Widgets.TicketSystem.Models.CustomerNavigationModel
+
+@if (!Model.HideTickets)
+{
+    <li class="nav-item">
+        <a class="nav-link @(Model.SelectedTab == Widgets.TicketSystem.Models.AccountNavigationEnum.Tickets ? "active" : "")" href="@Url.Action("CustomerTickets", "TicketSystem", new { area = "" })">
+            <i class="fa fa-ticket-alt"></i>
+            @Loc["Plugins.Widgets.TicketSystem.Tickets"]
+        </a>
+    </li>
+} 

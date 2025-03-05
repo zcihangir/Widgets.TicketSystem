@@ -1,0 +1,169 @@
+@model ContactFormListModel
+@using Widgets.TicketSystem.Models
+
+@{
+    //page title
+    ViewBag.Title = Loc["Plugins.Widgets.TicketSystem.ContactForms"];
+}
+
+<form asp-controller="TicketSystem" asp-action="ContactFormList" method="post">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">
+                        <i class="fa fa-list-alt"></i>
+                        @Loc["Plugins.Widgets.TicketSystem.ContactForms"]
+                    </h5>
+                    <div>
+                        <a href="@Url.Action("CreateContactForm", "TicketSystem")" class="btn btn-success">
+                            <i class="fa fa-plus"></i>
+                            @Loc["Plugins.Widgets.TicketSystem.ContactForm.Create"]
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-horizontal">
+                        <div class="form-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <admin-label asp-for="SearchName" class="col-md-4 col-form-label" />
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                                                </div>
+                                                <admin-input asp-for="SearchName" class="form-control" placeholder="@Loc["Plugins.Widgets.TicketSystem.ContactForm.List.SearchName.Placeholder"]" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <admin-label asp-for="SearchActive" class="col-md-4 col-form-label" />
+                                        <div class="col-md-8">
+                                            <admin-select asp-for="SearchActive" asp-items="@(new List<SelectListItem>
+                                            {
+                                                new SelectListItem { Text = Loc["Admin.Common.All"], Value = "" },
+                                                new SelectListItem { Text = Loc["Admin.Common.Yes"], Value = "true" },
+                                                new SelectListItem { Text = Loc["Admin.Common.No"], Value = "false" }
+                                            })" class="form-control custom-select" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                <button class="btn btn-primary" id="search-contact-forms">
+                                    <i class="fa fa-search"></i> @Loc["Admin.Common.Search"]
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div id="contact-forms-grid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function () {
+        $("#contact-forms-grid").kendoGrid({
+            dataSource: {
+                transport: {
+                    read: {
+                        url: "@Html.Raw(Url.Action("ContactFormList", "TicketSystem"))",
+                        type: "POST",
+                        dataType: "json",
+                        data: additionalData
+                    }
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                    errors: "Errors"
+                },
+                error: function(e) {
+                    display_kendoui_grid_error(e);
+                    // Cancel the changes
+                    this.cancelChanges();
+                },
+                pageSize: 20,
+                serverPaging: true,
+                serverFiltering: true,
+                serverSorting: true
+            },
+            pageable: {
+                refresh: true,
+                pageSizes: [20]
+            },
+            editable: {
+                confirmation: false,
+                mode: "inline"
+            },
+            scrollable: false,
+            columns: [{
+                field: "Name",
+                title: "@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Name"]",
+                width: 200,
+                template: '<a href="EditContactForm/#=Id#" class="text-primary font-weight-bold">#=Name#</a>'
+            }, {
+                field: "WidgetZone",
+                title: "@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.WidgetZone"]",
+                width: 200
+            }, {
+                field: "Active",
+                title: "@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Active"]",
+                width: 100,
+                headerAttributes: { style: "text-align:center" },
+                attributes: { style: "text-align:center" },
+                template: function(dataItem) {
+                    if (dataItem.Active) {
+                        return '<span class="badge badge-success"><i class="fa fa-check"></i></span>';
+                    } else {
+                        return '<span class="badge badge-danger"><i class="fa fa-times"></i></span>';
+                    }
+                }
+            }, {
+                field: "DisplayOrder",
+                title: "@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.DisplayOrder"]",
+                width: 100,
+                headerAttributes: { style: "text-align:center" },
+                attributes: { style: "text-align:center" }
+            }, {
+                field: "CreatedOn",
+                title: "@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.CreatedOn"]",
+                width: 150
+            }, {
+                field: "Id",
+                title: "@Loc["Admin.Common.Edit"]",
+                width: 150,
+                template: '<div class="btn-group">' +
+                    '<a class="btn btn-sm btn-outline-primary" href="EditContactForm/#=Id#"><i class="fa fa-pencil-alt"></i> @Loc["Admin.Common.Edit"]</a>' +
+                    '<a class="btn btn-sm btn-outline-info" href="SubmissionList?SearchFormId=#=Id#"><i class="fa fa-list"></i> @Loc["Plugins.Widgets.TicketSystem.ContactForm.Submissions"]</a>' +
+                    '</div>'
+            }]
+        });
+    });
+
+    function additionalData() {
+        var data = {
+            SearchName: $('#@Html.IdFor(model => model.SearchName)').val(),
+            SearchActive: $('#@Html.IdFor(model => model.SearchActive)').val()
+        };
+        addAntiForgeryToken(data);
+        return data;
+    }
+</script> 

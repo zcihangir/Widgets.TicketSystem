@@ -1,0 +1,197 @@
+@model Widgets.TicketSystem.Models.ContactFormModel
+
+<div class="card mb-4">
+    <div class="card-header bg-light d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">
+            <i class="fa fa-list"></i>
+            @Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.FormFields"]
+        </h5>
+        <button type="button" onclick="addFormField()" class="btn btn-success">
+            <i class="fa fa-plus"></i> @Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.AddNew"]
+        </button>
+    </div>
+    <div class="card-body">
+        <div class="alert alert-info mb-3">
+            <i class="fa fa-info-circle"></i> @Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.FormFields.Info"]
+        </div>
+        
+        @if (Model.FormFields.Count > 0)
+        {
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>@Loc["Plugins.Widgets.TicketSystem.ContactForm.Field.Value.Name"]</th>
+                            <th>@Loc["Plugins.Widgets.TicketSystem.ContactForm.Field.Value.FieldType"]</th>
+                            <th>@Loc["Plugins.Widgets.TicketSystem.ContactForm.Field.Value.IsRequired"]</th>
+                            <th>@Loc["Plugins.Widgets.TicketSystem.Department.Fields.DisplayOrder"]</th>
+                            <th>@Loc["Admin.Common.Actions"]</th>
+                        </tr>
+                    </thead>
+                    <tbody id="form-fields-container">
+                        @for (int i = 0; i < Model.FormFields.Count; i++)
+                        {
+                            <tr class="form-field-item" data-index="@i">
+                                <td>
+                                    <input asp-for="@Model.FormFields[i].Name" class="form-control" />
+                                    <span asp-validation-for="@Model.FormFields[i].Name" class="text-danger"></span>
+                                    <input type="hidden" asp-for="@Model.FormFields[i].Id" />
+                                </td>
+                                <td>
+                                    <select asp-for="@Model.FormFields[i].FieldType" asp-items="@(new List<SelectListItem>
+                                    {
+                                        new SelectListItem { Text = Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Text"], Value = "Text" },
+                                        new SelectListItem { Text = Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.TextArea"], Value = "TextArea" },
+                                        new SelectListItem { Text = Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Email"], Value = "Email" },
+                                        new SelectListItem { Text = Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Select"], Value = "Select" },
+                                        new SelectListItem { Text = Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Checkbox"], Value = "Checkbox" }
+                                    })" onchange="toggleFieldOptions(this)" class="form-control"></select>
+                                    <span asp-validation-for="@Model.FormFields[i].FieldType" class="text-danger"></span>
+                                    
+                                    <div class="field-options mt-2" style="display: @(Model.FormFields[i].FieldType == "Select" ? "block" : "none")">
+                                        <div class="field-options-container mb-2">
+                                            @if (Model.FormFields[i].FieldOptions != null && Model.FormFields[i].FieldOptions.Count > 0)
+                                            {
+                                                for (int j = 0; j < Model.FormFields[i].FieldOptions.Count; j++)
+                                                {
+                                                    <div class="field-option-item mb-2">
+                                                        <div class="input-group">
+                                                            <input type="text" name="FormFields[@i].FieldOptions[@j]" value="@Model.FormFields[i].FieldOptions[j]" class="form-control" />
+                                                            <div class="input-group-append">
+                                                                <button type="button" class="btn btn-danger" onclick="removeFieldOption(this)">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                        <button type="button" class="btn btn-sm btn-info" onclick="addFieldOption(this)">
+                                            <i class="fa fa-plus"></i> @Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldOptions.AddNew"]
+                                        </button>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-check">
+                                        <input asp-for="@Model.FormFields[i].IsRequired" class="form-check-input" />
+                                        <label class="form-check-label" for="@Html.IdFor(m => m.FormFields[i].IsRequired)">
+                                            @Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.IsRequired.Hint"]
+                                        </label>
+                                    </div>
+                                    <span asp-validation-for="@Model.FormFields[i].IsRequired" class="text-danger"></span>
+                                    
+                                    <div class="mt-2">
+                                        <label>@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.DefaultValue.Hint"]</label>
+                                        <input asp-for="@Model.FormFields[i].DefaultValue" class="form-control" />
+                                        <span asp-validation-for="@Model.FormFields[i].DefaultValue" class="text-danger"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input asp-for="@Model.FormFields[i].DisplayOrder" class="form-control" />
+                                    <span asp-validation-for="@Model.FormFields[i].DisplayOrder" class="text-danger"></span>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-danger" onclick="removeFormField(this)">
+                                        <i class="fa fa-trash"></i> @Loc["Admin.Common.Delete"]
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning">
+                <i class="fa fa-exclamation-triangle"></i> @Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.FormFields.NoFields"]
+            </div>
+            <div id="form-fields-container"></div>
+        }
+    </div>
+</div>
+
+<script>
+    // Form alanı ekleme
+    window.addFormField = function() {
+        var container = $('#form-fields-container');
+        var index = container.find('.form-field-item').length;
+        
+        $.ajax({
+            url: '@Url.Action("AddFormField", "TicketSystem")',
+            type: 'GET',
+            data: { index: index },
+            success: function(data) {
+                if (container.is('tbody')) {
+                    // Tablo yapısı için
+                    container.append(data);
+                    
+                    // Eğer ilk alan eklendiyse, uyarı mesajını kaldır ve tablo oluştur
+                    if (index === 0) {
+                        $('.alert-warning').remove();
+                        var table = $('<div class="table-responsive"><table class="table table-bordered table-striped table-hover"><thead><tr><th>@Loc["Plugins.Widgets.TicketSystem.ContactForm.Field.Value.Name"]</th><th>@Loc["Plugins.Widgets.TicketSystem.ContactForm.Field.Value.FieldType"]</th><th>@Loc["Plugins.Widgets.TicketSystem.ContactForm.Field.Value.IsRequired"]</th><th>@Loc["Plugins.Widgets.TicketSystem.Department.Fields.DisplayOrder"]</th><th>@Loc["Admin.Common.Actions"]</th></tr></thead></table></div>');
+                        table.find('table').append(container);
+                        container.parent().parent().replaceWith(table);
+                    }
+                } else {
+                    // İlk alan için tablo oluştur
+                    var table = $('<div class="table-responsive"><table class="table table-bordered table-striped table-hover"><thead><tr><th>@Loc["Plugins.Widgets.TicketSystem.ContactForm.Field.Value.Name"]</th><th>@Loc["Plugins.Widgets.TicketSystem.ContactForm.Field.Value.FieldType"]</th><th>@Loc["Plugins.Widgets.TicketSystem.ContactForm.Field.Value.IsRequired"]</th><th>@Loc["Plugins.Widgets.TicketSystem.Department.Fields.DisplayOrder"]</th><th>@Loc["Admin.Common.Actions"]</th></tr></thead><tbody id="form-fields-container"></tbody></table></div>');
+                    container.replaceWith(table);
+                    $('#form-fields-container').append(data);
+                }
+            }
+        });
+    }
+    
+    // Form alanı silme
+    window.removeFormField = function(button) {
+        if (confirm('@Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.DeleteConfirmation"]')) {
+            var row = $(button).closest('.form-field-item');
+            row.remove();
+            
+            // Eğer son alan silindiyse, uyarı mesajını göster
+            if ($('#form-fields-container').find('.form-field-item').length === 0) {
+                var warningHtml = '<div class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> @Loc["Plugins.Widgets.TicketSystem.ContactForm.Fields.FormFields.NoFields"]</div>';
+                $('.table-responsive').replaceWith(warningHtml + '<div id="form-fields-container"></div>');
+            }
+        }
+    }
+    
+    // Alan seçenekleri göster/gizle
+    window.toggleFieldOptions = function(select) {
+        var fieldType = $(select).val();
+        var optionsContainer = $(select).closest('td').find('.field-options');
+        
+        if (fieldType === 'Select' || fieldType === 'Checkbox' || fieldType === 'Radio') {
+            optionsContainer.show();
+        } else {
+            optionsContainer.hide();
+        }
+    }
+    
+    // Alan seçeneği ekleme
+    window.addFieldOption = function(button) {
+        var container = $(button).prev('.field-options-container');
+        var fieldIndex = $(button).closest('.form-field-item').data('index');
+        var optionIndex = container.find('.field-option-item').length;
+        
+        var html = '<div class="field-option-item mb-2">' +
+                '    <div class="input-group">' +
+                '        <input type="text" name="FormFields[' + fieldIndex + '].FieldOptions[' + optionIndex + ']" class="form-control" />' +
+                '        <div class="input-group-append">' +
+                '            <button type="button" class="btn btn-danger" onclick="removeFieldOption(this)">' +
+                '                <i class="fa fa-trash"></i>' +
+                '            </button>' +
+                '        </div>' +
+                '    </div>' +
+                '</div>';
+                
+        container.append(html);
+    }
+    
+    // Alan seçeneği silme
+    window.removeFieldOption = function(button) {
+        $(button).closest('.field-option-item').remove();
+    }
+</script> 

@@ -1,0 +1,142 @@
+@model Widgets.TicketSystem.Models.ContactFormSubmissionListModel
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.List.Title"];
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel light form-fit">
+            <div class="x_title">
+                <div class="caption">
+                    <i class="fa fa-list"></i>
+                    @Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.List.Title"]
+                </div>
+            </div>
+            <div class="x_content form">
+                <div class="form-horizontal">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <admin-label asp-for="SearchFormId" />
+                            <div class="col-md-9 col-sm-9">
+                                <admin-select asp-for="SearchFormId" asp-items="Model.AvailableForms" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <admin-label asp-for="SearchStoreId" />
+                            <div class="col-md-9 col-sm-9">
+                                <admin-select asp-for="SearchStoreId" asp-items="Model.AvailableStores" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <admin-label asp-for="SearchConvertedToTicket" />
+                            <div class="col-md-9 col-sm-9">
+                                <admin-select asp-for="SearchConvertedToTicket" asp-items="@(new List<SelectListItem>
+                                {
+                                    new SelectListItem { Text = Loc["Admin.Common.All"], Value = "" },
+                                    new SelectListItem { Text = Loc["Admin.Common.Yes"], Value = "true" },
+                                    new SelectListItem { Text = Loc["Admin.Common.No"], Value = "false" }
+                                })" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-sm-offset-3 col-md-9 col-sm-9">
+                                <button class="btn btn-success filter-submit" id="search-submissions">
+                                    <i class="fa fa-search"></i> @Loc["Admin.Common.Search"]
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="x_content">
+                <div id="submissions-grid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#submissions-grid").kendoGrid({
+            dataSource: {
+                transport: {
+                    read: {
+                        url: "@Html.Raw(Url.Action("SubmissionList", "TicketSystem"))",
+                        type: "POST",
+                        dataType: "json",
+                        data: additionalData
+                    }
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                    errors: "Errors"
+                },
+                error: function(e) {
+                    display_kendoui_grid_error(e);
+                    // Cancel the changes
+                    this.cancelChanges();
+                },
+                pageSize:20,
+                serverPaging: true,
+                serverFiltering: true,
+                serverSorting: true
+            },
+            pageable: {
+                refresh: true,
+                pageSizes: [5, 10, 20, 50]
+            },
+            editable: false,
+            columns: [{
+                field: "ContactFormName",
+                title: "@Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.ContactFormId"]",
+                width: 200
+            }, {
+                field: "CustomerEmail",
+                title: "@Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.CustomerEmail"]",
+                width: 200
+            }, {
+                field: "CustomerFullName",
+                title: "@Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.CustomerFullName"]",
+                width: 200
+            }, {
+                field: "ConvertedToTicket",
+                title: "@Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.ConvertedToTicket"]",
+                width: 100,
+                headerAttributes: { style: "text-align:center" },
+                attributes: { style: "text-align:center" },
+                template: '# if(ConvertedToTicket) {# <i class="fa fa-check" aria-hidden="true" style="color:green"></i> #} else {# <i class="fa fa-times" aria-hidden="true" style="color:red"></i> #} #'
+            }, {
+                field: "CreatedOn",
+                title: "@Loc["Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.CreatedOn"]",
+                width: 150
+            }, {
+                field: "Id",
+                title: "@Loc["Admin.Common.View"]",
+                width: 100,
+                headerAttributes: { style: "text-align:center" },
+                attributes: { style: "text-align:center" },
+                template: '<a class="btn btn-sm btn-default" href="ViewSubmission/#=Id#"><i class="fa fa-eye"></i> @Loc["Admin.Common.View"]</a>'
+            }]
+        });
+    });
+
+    function additionalData() {
+        var data = {
+            SearchFormId: $('#@Html.IdFor(model => model.SearchFormId)').val(),
+            SearchStoreId: $('#@Html.IdFor(model => model.SearchStoreId)').val(),
+            SearchConvertedToTicket: $('#@Html.IdFor(model => model.SearchConvertedToTicket)').val()
+        };
+        addAntiForgeryToken(data);
+        return data;
+    }
+
+    $("#search-submissions").click(function () {
+        var grid = $('#submissions-grid').data('kendoGrid');
+        grid.dataSource.page(1);
+        return false;
+    });
+</script> 

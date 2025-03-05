@@ -1,0 +1,1001 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language Name="English">
+
+	<Resource Name="Widgets.TicketSystem.FriendlyName">
+		<Value>Ticket System</Value>
+	</Resource>
+
+
+	<Resource Name="Plugins.Widgets.TicketSystem">
+		<Value>Ticket System</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Tickets">
+		<Value>Tickets</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForms">
+		<Value>Contact Forms</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactFormSubmissions">
+		<Value>Form Submissions</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Configuration">
+		<Value>Configuration</Value>
+	</Resource>
+
+	<Resource Name="Admin.Common.Actions">
+		<Value>Actions</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.Configuration.Updated">
+		<Value>Configuration updated successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Fields.Enable">
+		<Value>Enable ticket system</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Fields.DisplayOrder">
+		<Value>Display order</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Fields.LimitedToStores">
+		<Value>Limited to stores</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Fields.LimitedToGroups">
+		<Value>Limited to customer groups</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Fields.Departments">
+		<Value>Departments</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Fields.Departments.Hint">
+		<Value>Enter one department per line. These departments will be available for ticket creation.</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Fields.SendEmailNotification">
+		<Value>Send email notification</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Fields.NotificationEmail">
+		<Value>Notification email</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Fields.ShowTicketListInCustomerAccount">
+		<Value>Show ticket list in customer account</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Fields.ShowTicketOptionOnProductPage">
+		<Value>Show ticket option on product page</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Fields.ShowTicketOptionOnOrderDetailsPage">
+		<Value>Show ticket option on order details page</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Create">
+		<Value>Create new ticket</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Edit">
+		<Value>Edit ticket</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.BackToList">
+		<Value>Back to ticket list</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Added">
+		<Value>Ticket has been created successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Updated">
+		<Value>Ticket has been updated successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Deleted">
+		<Value>Ticket has been deleted successfully</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.Id">
+		<Value>ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.Subject">
+		<Value>Subject</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.Message">
+		<Value>Message</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.Department">
+		<Value>Department</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.Status">
+		<Value>Status</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.Priority">
+		<Value>Priority</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.CustomerId">
+		<Value>Customer ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.CustomerEmail">
+		<Value>Customer Email</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.CustomerFullName">
+		<Value>Customer Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.StaffId">
+		<Value>Staff</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.StaffName">
+		<Value>Staff Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.OrderId">
+		<Value>Order ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.ProductId">
+		<Value>Product ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.ContactFormId">
+		<Value>Contact Form ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.LimitedToStores">
+		<Value>Limited to stores</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.CreatedOn">
+		<Value>Created On</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.UpdatedOn">
+		<Value>Updated On</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.List.SearchCustomerEmail">
+		<Value>Customer Email</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.List.SearchDepartment">
+		<Value>Department</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.List.SearchStatus">
+		<Value>Status</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.List.SearchPriority">
+		<Value>Priority</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.List.SearchStoreId">
+		<Value>Store</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Notes">
+		<Value>Ticket Notes</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Notes.NoNotes">
+		<Value>No notes yet</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.AddNote">
+		<Value>Add note</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.DisplayToCustomer">
+		<Value>Display to customer</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.Note">
+		<Value>Note</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.CreatedById">
+		<Value>Created By ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.CreatedByName">
+		<Value>Created By</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Note.Deleted">
+		<Value>Note has been deleted successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Note.DeleteConfirmation">
+		<Value>Are you sure you want to delete this note?</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Added">
+		<Value>Contact form has been created successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Updated">
+		<Value>Contact form has been updated successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Deleted">
+		<Value>Contact form has been deleted successfully</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Name">
+		<Value>Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Description">
+		<Value>Description</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.WidgetZone">
+		<Value>Widget Zone</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Active">
+		<Value>Active</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.DisplayOrder">
+		<Value>Display Order</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.LimitedToStores">
+		<Value>Limited to stores</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.CreatedOn">
+		<Value>Created On</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.UpdatedOn">
+		<Value>Updated On</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.List.SearchName">
+		<Value>Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.List.SearchActive">
+		<Value>Active</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.List.SearchStoreId">
+		<Value>Store</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.Name">
+		<Value>Field Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType">
+		<Value>Field Type</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.IsRequired">
+		<Value>Required</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.DefaultValue">
+		<Value>Default Value</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldOptions">
+		<Value>Field Options</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.DisplayOrder">
+		<Value>Display Order</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Field.Value.Name">
+		<Value>Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Field.Value.FieldType">
+		<Value>Field Type</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Field.Value.IsRequired">
+		<Value>Required</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Field.Value.Value">
+		<Value>Value</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Field.SelectOption">
+		<Value>-- Select --</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submit">
+		<Value>Submit</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.ContactFormId">
+		<Value>Contact Form ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.CustomerId">
+		<Value>Customer ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.CustomerEmail">
+		<Value>Customer Email</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.CustomerFullName">
+		<Value>Customer Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.FormValues">
+		<Value>Form Values</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.CreatedOn">
+		<Value>Created On</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.ConvertedToTicket">
+		<Value>Converted to Ticket</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.TicketId">
+		<Value>Ticket ID</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.List.SearchContactFormId">
+		<Value>Contact Form</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.List.SearchCustomerEmail">
+		<Value>Customer Email</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.List.SearchConvertedToTicket">
+		<Value>Converted to Ticket</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.List.SearchStoreId">
+		<Value>Store</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Deleted">
+		<Value>Submission has been deleted successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.ConvertedToTicket">
+		<Value>Submission has been converted to ticket successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.AlreadyConverted">
+		<Value>This submission has already been converted to a ticket</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.CustomerTickets.Title">
+		<Value>My Tickets</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CustomerTickets.CreateNew">
+		<Value>Create New Ticket</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CustomerTickets.Subject">
+		<Value>Subject</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CustomerTickets.Department">
+		<Value>Department</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CustomerTickets.Status">
+		<Value>Status</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CustomerTickets.Priority">
+		<Value>Priority</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CustomerTickets.CreatedOn">
+		<Value>Created On</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CustomerTickets.View">
+		<Value>View</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CustomerTickets.NoTickets">
+		<Value>You don't have any tickets yet</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketDetails.Title">
+		<Value>Ticket Details</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketDetails.BackToList">
+		<Value>Back to Tickets</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketDetails.Department">
+		<Value>Department</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketDetails.Status">
+		<Value>Status</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketDetails.Priority">
+		<Value>Priority</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketDetails.CreatedOn">
+		<Value>Created On</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketDetails.Message">
+		<Value>Message</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketDetails.Conversation">
+		<Value>Conversation</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketDetails.NoNotes">
+		<Value>No replies yet</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketDetails.Reply">
+		<Value>Reply</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketDetails.SendReply">
+		<Value>Send Reply</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketDetails.Staff">
+		<Value>Staff</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.CreateTicket.Title">
+		<Value>Create New Ticket</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CreateTicket.Subject">
+		<Value>Subject</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CreateTicket.Department">
+		<Value>Department</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CreateTicket.Message">
+		<Value>Message</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CreateTicket.Submit">
+		<Value>Submit</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CreateTicket.Cancel">
+		<Value>Cancel</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketCreated.Title">
+		<Value>Ticket Created</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketCreated.Message">
+		<Value>Your ticket has been created successfully. We will respond to your inquiry as soon as possible.</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketCreated.ViewTickets">
+		<Value>View My Tickets</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactFormSubmitted.Title">
+		<Value>Form Submitted</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactFormSubmitted.Message">
+		<Value>Your form has been submitted successfully. We will contact you as soon as possible.</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactFormSubmitted.Continue">
+		<Value>Continue</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.Product.CreateTicket">
+		<Value>Have a question about this product?</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Product.CreateTicket.Button">
+		<Value>Ask a Question</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.Order.CreateTicket">
+		<Value>Have a question about this order?</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Order.CreateTicket.Button">
+		<Value>Get Support for This Order</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Order.CreateTicket.Description">
+		<Value>Do you have a question or issue with your order? Create a support ticket and our team will assist you.</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.List">
+		<Value>Departments</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.ManageFromList">
+		<Value>Manage departments from list</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.Create">
+		<Value>Add New Department</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.Edit">
+		<Value>Edit Department</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.BackToList">
+		<Value>Back to Department List</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.Added">
+		<Value>Department has been created successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.Updated">
+		<Value>Department has been updated successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.Deleted">
+		<Value>Department has been deleted successfully</Value>
+	</Resource>
+	
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.Fields.Name">
+		<Value>Department Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.Fields.Description">
+		<Value>Description</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.Fields.DisplayOrder">
+		<Value>Display Order</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.Fields.Active">
+		<Value>Active</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.Fields.LimitedToStores">
+		<Value>Limited to Stores</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.Fields.CreatedOn">
+		<Value>Created On</Value>
+	</Resource>
+	
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.List.SearchName">
+		<Value>Department Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.List.SearchStoreId">
+		<Value>Store</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Department.List.SearchActive">
+		<Value>Active</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.CreateTicket.ForOrder">
+		<Value>You are creating a ticket for order #{0}</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.CreateTicket.ForProduct">
+		<Value>You are creating a ticket for product: {0}</Value>
+	</Resource>
+
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Info">
+		<Value>Ticket Information</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.CustomerInfo">
+		<Value>Customer Information</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.RelatedInfo">
+		<Value>Related Information</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Dates">
+		<Value>Dates</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.AddNote">
+		<Value>Add Note</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.DisplayToCustomer.Hint">
+		<Value>Specify whether this note should be visible to the customer</Value>
+	</Resource>
+	
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.BasicInfo">
+		<Value>Basic Information</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.StoreSettings">
+		<Value>Store Settings</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Dates">
+		<Value>Dates</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Active.Hint">
+		<Value>Specify whether the contact form is active</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.LimitedToStores.Hint">
+		<Value>Specify whether the contact form is limited to specific stores</Value>
+	</Resource>
+	
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.FormFields">
+		<Value>Form Fields</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.FormFields.Info">
+		<Value>Configure the fields that will be displayed on this contact form</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.FormFields.NoFields">
+		<Value>No fields have been added yet</Value>
+	</Resource>
+	
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.AddNew">
+		<Value>Add New Field</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.Name.Placeholder">
+		<Value>Enter field name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.Name.Hint">
+		<Value>The name of the field as it will appear on the form</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Text">
+		<Value>Text</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.TextArea">
+		<Value>Text Area</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Email">
+		<Value>Email</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Select">
+		<Value>Dropdown</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Checkbox">
+		<Value>Checkbox</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldType.Hint">
+		<Value>Select the type of field</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.DefaultValue.Placeholder">
+		<Value>Enter default value</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.DefaultValue.Hint">
+		<Value>The default value for this field (optional)</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldOptions.AddNew">
+		<Value>Add Option</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.FieldOptions.Hint">
+		<Value>Add options for dropdown fields (one per line)</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.DisplayOrder.Hint">
+		<Value>The display order of this field</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.DeleteConfirmation">
+		<Value>Are you sure you want to delete this field?</Value>
+	</Resource>
+	
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Create.Title">
+		<Value>Create Contact Form</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Edit.Title">
+		<Value>Edit Contact Form</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.List.BackToList">
+		<Value>Back to contact form list</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.List.SearchName.Placeholder">
+		<Value>Search by name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submissions">
+		<Value>Submissions</Value>
+	</Resource>
+	
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.List.Title">
+		<Value>Form Submissions</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.View.Title">
+		<Value>View Submission</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.ConvertToTicket">
+		<Value>Convert to Ticket</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.ViewTicket">
+		<Value>View Ticket</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.FormValues.FieldName">
+		<Value>Field Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.FormValues.FieldValue">
+		<Value>Field Value</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.ConvertToTicket.Confirmation">
+		<Value>Are you sure you want to convert this submission to a ticket?</Value>
+	</Resource>
+	
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.List.SearchCustomerEmail.Placeholder">
+		<Value>Search by customer email</Value>
+	</Resource>
+	
+	<Resource Name="Account.Navigation.Tickets">
+		<Value>My Tickets</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.Info">
+		<Value>Customer info</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.Addresses">
+		<Value>Addresses</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.Orders">
+		<Value>Orders</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.BackInStockSubscriptions">
+		<Value>Back in stock subscriptions</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.ReturnRequests">
+		<Value>Return requests</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.ChangePassword">
+		<Value>Change password</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.Avatar">
+		<Value>Avatar</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.DeleteAccount">
+		<Value>Delete account</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.DownloadableProducts">
+		<Value>Downloadable products</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.Auctions">
+		<Value>Auctions</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.Notes">
+		<Value>Notes</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.Documents">
+		<Value>Documents</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.Reviews">
+		<Value>My product reviews</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.CourseProgress">
+		<Value>Course progress</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.Courses">
+		<Value>Courses</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.CustomerProducts">
+		<Value>My products</Value>
+	</Resource>
+	<Resource Name="Account.Navigation.GiftVouchers">
+		<Value>Gift vouchers</Value>
+	</Resource>
+	
+	<!-- TicketPriority dil kaynakları -->
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketPriority.Fields.Name">
+		<Value>Priority Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketPriority.Fields.Color">
+		<Value>Color</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketPriority.Fields.DisplayOrder">
+		<Value>Display Order</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketPriority.Fields.IsDefault">
+		<Value>Default</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketPriority.Fields.CreatedOn">
+		<Value>Created On</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketPriority.Fields.UpdatedOn">
+		<Value>Updated On</Value>
+	</Resource>
+	
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketPriority.List">
+		<Value>Priorities</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketPriority.Create">
+		<Value>Add New Priority</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketPriority.Edit">
+		<Value>Edit Priority</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketPriority.BackToList">
+		<Value>Back to Priority List</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketPriority.Added">
+		<Value>Priority created successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketPriority.Updated">
+		<Value>Priority updated successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketPriority.Deleted">
+		<Value>Priority deleted successfully</Value>
+	</Resource>
+	
+	<!-- TicketStatus dil kaynakları -->
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.Fields.Name">
+		<Value>Status Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.Fields.Color">
+		<Value>Color</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.Fields.DisplayOrder">
+		<Value>Display Order</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.Fields.IsDefault">
+		<Value>Default</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.Fields.IsClosed">
+		<Value>Closed</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.Fields.CreatedOn">
+		<Value>Created On</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.Fields.UpdatedOn">
+		<Value>Updated On</Value>
+	</Resource>
+	
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.List">
+		<Value>Statuses</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.Create">
+		<Value>Add New Status</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.Edit">
+		<Value>Edit Status</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.BackToList">
+		<Value>Back to Status List</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.Added">
+		<Value>Status created successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.Updated">
+		<Value>Status updated successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.TicketStatus.Deleted">
+		<Value>Status deleted successfully</Value>
+	</Resource>
+	
+	<!-- Staff dil kaynakları -->
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.Fields.Name">
+		<Value>Staff Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.Fields.Email">
+		<Value>Email</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.Fields.CustomerId">
+		<Value>Customer ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.Fields.CustomerEmail">
+		<Value>Customer Email</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.Fields.CustomerFullName">
+		<Value>Customer Full Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.Fields.Active">
+		<Value>Active</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.Fields.IsAdmin">
+		<Value>Admin</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.Fields.Departments">
+		<Value>Departments</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.Fields.CreatedOn">
+		<Value>Created On</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.Fields.UpdatedOn">
+		<Value>Updated On</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.List.SearchName">
+		<Value>Staff Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.List.SearchEmail">
+		<Value>Email</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.List.SearchActive">
+		<Value>Active</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Staff.List.SearchDepartmentId">
+		<Value>Department</Value>
+	</Resource>
+	
+	<!-- Search dil kaynakları -->
+	<Resource Name="Plugins.Widgets.TicketSystem.Search.Keyword">
+		<Value>Keyword</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Search.TicketNumber">
+		<Value>Ticket Number</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Search.CustomerEmail">
+		<Value>Customer Email</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Search.DepartmentId">
+		<Value>Department</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Search.StatusId">
+		<Value>Status</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Search.PriorityId">
+		<Value>Priority</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Search.StaffId">
+		<Value>Staff</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Search.DateRange">
+		<Value>Date Range</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Search.StartDate">
+		<Value>Start Date</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Search.EndDate">
+		<Value>End Date</Value>
+	</Resource>
+	
+	<!-- ContactFormFieldModel dil kaynakları -->
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Field.Value.Name">
+		<Value>Field Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Field.Value.FieldType">
+		<Value>Field Type</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Field.Value.IsRequired">
+		<Value>Required</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Field.Value.Value">
+		<Value>Value</Value>
+	</Resource>
+	
+	<!-- Ticket dil kaynakları -->
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.Subject">
+		<Value>Subject</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.Message">
+		<Value>Message</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.Department">
+		<Value>Department</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.Status">
+		<Value>Status</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.Priority">
+		<Value>Priority</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.CustomerId">
+		<Value>Customer ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.CustomerEmail">
+		<Value>Customer Email</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.CustomerFullName">
+		<Value>Customer Full Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.StaffId">
+		<Value>Staff ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.StaffName">
+		<Value>Staff Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.OrderId">
+		<Value>Order ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.ProductId">
+		<Value>Product ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.ContactFormId">
+		<Value>Contact Form ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.CreatedOn">
+		<Value>Created On</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.UpdatedOn">
+		<Value>Updated On</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.AddNote">
+		<Value>Add Note</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.DisplayToCustomer">
+		<Value>Display to Customer</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.Note">
+		<Value>Note</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.CreatedById">
+		<Value>Created By ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.Fields.CreatedByName">
+		<Value>Created By Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.List.SearchCustomerEmail">
+		<Value>Customer Email</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.List.SearchDepartment">
+		<Value>Department</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.List.SearchStatus">
+		<Value>Status</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.Ticket.List.SearchPriority">
+		<Value>Priority</Value>
+	</Resource>
+	
+	<!-- Eksik ContactForm dil kaynakları -->
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.List.SearchFormId">
+		<Value>Form</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.List.BackToList">
+		<Value>Back to Form Submission List</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field.IsRequired.Hint">
+		<Value>Specify whether this field is required</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Create">
+		<Value>Create Contact Form</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Edit">
+		<Value>Edit Contact Form</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.List">
+		<Value>Contact Forms</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Added">
+		<Value>Contact form created successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Updated">
+		<Value>Contact form updated successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Deleted">
+		<Value>Contact form deleted successfully</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields">
+		<Value>Form Fields</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Fields.Field">
+		<Value>Form Field</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.List">
+		<Value>Form Submissions</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.List.SearchStoreId">
+		<Value>Store</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.List.SearchConvertedToTicket">
+		<Value>Converted to Ticket</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.ContactFormId">
+		<Value>Form</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.CustomerId">
+		<Value>Customer ID</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.CustomerEmail">
+		<Value>Customer Email</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.CustomerFullName">
+		<Value>Customer Full Name</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.FormValues">
+		<Value>Form Values</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.CreatedOn">
+		<Value>Created On</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.ConvertedToTicket">
+		<Value>Converted to Ticket</Value>
+	</Resource>
+	<Resource Name="Plugins.Widgets.TicketSystem.ContactForm.Submission.Fields.TicketId">
+		<Value>Ticket ID</Value>
+	</Resource>
+</Language> 

@@ -1,0 +1,166 @@
+@model DepartmentListModel
+@{
+    Layout = "_AdminLayout";
+    ViewBag.Title = Loc["Plugins.Widgets.TicketSystem.Department.List"];
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel light form-fit">
+            <div class="x_title">
+                <div class="caption">
+                    <i class="fa fa-list"></i>
+                    @Loc["Plugins.Widgets.TicketSystem.Department.List"]
+                </div>
+                <div class="actions">
+                    <a href="@Url.Action("Create")" class="btn green"><i class="fa fa-plus"></i><span class="d-none d-sm-inline"> @Loc["Admin.Common.AddNew"] </span></a>
+                </div>
+            </div>
+            <div class="x_content form">
+                <div class="form-horizontal">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <admin-label asp-for="SearchName" />
+                            <div class="col-md-9 col-sm-9">
+                                <admin-input asp-for="SearchName" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <admin-label asp-for="SearchStoreId" />
+                            <div class="col-md-9 col-sm-9">
+                                <admin-select asp-for="SearchStoreId" asp-items="Model.AvailableStores" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <admin-label asp-for="SearchActive" />
+                            <div class="col-md-9 col-sm-9">
+                                <admin-select asp-for="SearchActive">
+                                    <option value="">@Loc["Admin.Common.All"]</option>
+                                    <option value="true">@Loc["Admin.Common.Yes"]</option>
+                                    <option value="false">@Loc["Admin.Common.No"]</option>
+                                </admin-select>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-offset-3 col-sm-offset-3 col-md-9 col-sm-9">
+                                    <button class="btn btn-success filter-submit" id="search-departments">
+                                        <i class="fa fa-search"></i> @Loc["Admin.Common.Search"]
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="x_content">
+                            <div id="departments-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#departments-grid").kendoGrid({
+            dataSource: {
+                transport: {
+                    read: {
+                        url: "@Html.Raw(Url.Action("DepartmentList", "Department"))",
+                        type: "POST",
+                        dataType: "json",
+                        data: additionalData
+                    }
+                },
+                schema: {
+                    data: "Data",
+                    total: "Total",
+                    errors: "Errors"
+                },
+                error: function(e) {
+                    display_kendoui_grid_error(e);
+                    // Cancel the changes
+                    this.cancelChanges();
+                },
+                pageSize: 20,
+                serverPaging: true,
+                serverFiltering: true,
+                serverSorting: true
+            },
+            pageable: {
+                refresh: true,
+                pageSizes: [20, 50, 100, 200, 500],
+                numeric: false,
+                previousNext: true,
+                info: false,
+                @if (ViewBag.RefreshPage == true)
+                {
+                    <text>
+                    autoBind: false,
+                    </text>
+                }
+            },
+            editable: {
+                confirmation: true,
+                mode: "inline"
+            },
+            scrollable: false,
+            columns: [{
+                field: "Name",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Department.Fields.Name"]",
+                width: 200
+            }, {
+                field: "Description",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Department.Fields.Description"]",
+                width: 200
+            }, {
+                field: "Active",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Department.Fields.Active"]",
+                width: 100,
+                headerAttributes: { style: "text-align:center" },
+                attributes: { style: "text-align:center" },
+                template: '# if(Active) {# <i class="fa fa-check" aria-hidden="true" style="color:green"></i> #} else {# <i class="fa fa-times" aria-hidden="true" style="color:red"></i> #} #'
+            }, {
+                field: "DisplayOrder",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Department.Fields.DisplayOrder"]",
+                width: 100
+            }, {
+                field: "LimitedToStores",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Department.Fields.LimitedToStores"]",
+                width: 100,
+                headerAttributes: { style: "text-align:center" },
+                attributes: { style: "text-align:center" },
+                template: '# if(LimitedToStores) {# <i class="fa fa-check" aria-hidden="true" style="color:green"></i> #} else {# <i class="fa fa-times" aria-hidden="true" style="color:red"></i> #} #'
+            }, {
+                field: "CreatedOn",
+                title: "@Loc["Plugins.Widgets.TicketSystem.Department.Fields.CreatedOn"]",
+                width: 200
+            }, {
+                field: "Id",
+                title: "@Loc["Admin.Common.Edit"]",
+                width: 100,
+                headerAttributes: { style: "text-align:center" },
+                attributes: { style: "text-align:center" },
+                template: '<a class="btn btn-sm btn-default" href="Edit/#=Id#"><i class="fa fa-pencil"></i> @Loc["Admin.Common.Edit"]</a>'
+            }]
+        });
+    });
+
+    function additionalData() {
+        var data = {
+            SearchName: $('#@Html.IdFor(model => model.SearchName)').val(),
+            SearchStoreId: $('#@Html.IdFor(model => model.SearchStoreId)').val(),
+            SearchActive: $('#@Html.IdFor(model => model.SearchActive)').val()
+        };
+        addAntiForgeryToken(data);
+        return data;
+    }
+
+    $(document).ready(function () {
+        $('#search-departments').click(function () {
+            var grid = $('#departments-grid').data('kendoGrid');
+            grid.dataSource.page(1);
+            return false;
+        });
+    });
+</script> 

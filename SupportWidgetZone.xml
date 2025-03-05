@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<WidgetZones>
+  <WidgetZones>account_navigation_after</WidgetZones>
+  <WidgetZones>productdetails_inside_overview_buttons_after</WidgetZones>
+  <WidgetZones>orderdetails_page_overview</WidgetZones>
+<WidgetZones>contactus_top</WidgetZones>
+	<WidgetZones>contactus_bottom</WidgetZones>
+<WidgetZones>home_page_top</WidgetZones>
+<WidgetZones>home_page_bottom</WidgetZones>
+<WidgetZones>footer_before</WidgetZones>
+<WidgetZones>footer_after</WidgetZones>
+</WidgetZones> 

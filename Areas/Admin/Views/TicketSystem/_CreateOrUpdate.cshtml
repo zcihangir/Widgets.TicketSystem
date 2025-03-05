@@ -1,0 +1,287 @@
+@model TicketModel
+@using Widgets.TicketSystem.Models
+
+<div asp-validation-summary="All" class="text-danger"></div>
+<input asp-for="Id" type="hidden" />
+
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5 class="mb-0">
+            <i class="fa fa-ticket-alt"></i> @Loc["Plugins.Widgets.TicketSystem.Ticket.Info"]
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="form-group row">
+            <admin-label asp-for="Subject" class="col-md-3 col-form-label text-right" />
+            <div class="col-md-9">
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <admin-label asp-for="Message" class="col-md-3 col-form-label text-right" />
+            <div class="col-md-9">
+                <textarea asp-for="Message" class="form-control" rows="5"></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <admin-label asp-for="Department" class="col-md-3 col-form-label text-right" />
+            <div class="col-md-9">
+                <select asp-for="Department" asp-items="Model.AvailableDepartments" class="form-control"></select>
+                <span asp-validation-for="Department" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <admin-label asp-for="Status" class="col-md-6 col-form-label text-right" />
+                    <div class="col-md-6">
+                        <select asp-for="Status" asp-items="Model.AvailableStatuses" class="form-control"></select>
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group row">
+                    <admin-label asp-for="Priority" class="col-md-6 col-form-label text-right" />
+                    <div class="col-md-6">
+                        <select asp-for="Priority" asp-items="Model.AvailablePriorities" class="form-control"></select>
+                        <span asp-validation-for="Priority" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5 class="mb-0">
+            <i class="fa fa-user"></i> @Loc["Plugins.Widgets.TicketSystem.Ticket.CustomerInfo"]
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="form-group row">
+            <admin-label asp-for="CustomerEmail" class="col-md-3 col-form-label text-right" />
+            <div class="col-md-9">
+                <input asp-for="CustomerEmail" class="form-control" />
+                <span asp-validation-for="CustomerEmail" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <admin-label asp-for="CustomerFullName" class="col-md-3 col-form-label text-right" />
+            <div class="col-md-9">
+                <input asp-for="CustomerFullName" class="form-control" />
+                <span asp-validation-for="CustomerFullName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <admin-label asp-for="StaffId" class="col-md-3 col-form-label text-right" />
+            <div class="col-md-9">
+                <select asp-for="StaffId" asp-items="Model.AvailableStaff" class="form-control"></select>
+                <span asp-validation-for="StaffId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header bg-light">
+        <h5 class="mb-0">
+            <i class="fa fa-link"></i> @Loc["Plugins.Widgets.TicketSystem.Ticket.RelatedInfo"]
+        </h5>
+    </div>
+    <div class="card-body">
+        <div class="form-group row">
+            <admin-label asp-for="OrderId" class="col-md-3 col-form-label text-right" />
+            <div class="col-md-9">
+                <div class="input-group">
+                    <input asp-for="OrderId" class="form-control" />
+                    @if (!string.IsNullOrEmpty(Model.OrderId))
+                    {
+                        <div class="input-group-append">
+                            <a href="@Url.Action("Edit", "Order", new { id = Model.OrderId, area = "Admin" })" class="btn btn-info" target="_blank">
+                                <i class="fa fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <span asp-validation-for="OrderId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <admin-label asp-for="ProductId" class="col-md-3 col-form-label text-right" />
+            <div class="col-md-9">
+                <div class="input-group">
+                    <input asp-for="ProductId" class="form-control" />
+                    @if (!string.IsNullOrEmpty(Model.ProductId))
+                    {
+                        <div class="input-group-append">
+                            <a href="@Url.Action("Edit", "Product", new { id = Model.ProductId, area = "Admin" })" class="btn btn-info" target="_blank">
+                                <i class="fa fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <admin-label asp-for="ContactFormId" class="col-md-3 col-form-label text-right" />
+            <div class="col-md-9">
+                <div class="input-group">
+                    <input asp-for="ContactFormId" class="form-control" />
+                    @if (!string.IsNullOrEmpty(Model.ContactFormId))
+                    {
+                        <div class="input-group-append">
+                            <a href="@Url.Action("EditContactForm", "TicketSystem", new { id = Model.ContactFormId, area = "Admin" })" class="btn btn-info" target="_blank">
+                                <i class="fa fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <span asp-validation-for="ContactFormId" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (!String.IsNullOrEmpty(Model.Id))
+{
+    <div class="card mb-4">
+        <div class="card-header bg-light">
+            <h5 class="mb-0">
+                <i class="fa fa-clock"></i> @Loc["Plugins.Widgets.TicketSystem.Ticket.Dates"]
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <admin-label asp-for="CreatedOn" class="col-md-4 col-form-label text-right" />
+                        <div class="col-md-8">
+                            <div class="form-control-plaintext">
+                                <i class="fa fa-calendar-alt mr-2"></i>@Model.CreatedOn
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                        <admin-label asp-for="UpdatedOn" class="col-md-4 col-form-label text-right" />
+                        <div class="col-md-8">
+                            <div class="form-control-plaintext">
+                                <i class="fa fa-calendar-alt mr-2"></i>@Model.UpdatedOn
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (!String.IsNullOrEmpty(Model.Id))
+{
+    <div class="card mb-4">
+        <div class="card-header bg-light d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">
+                <i class="fa fa-comments"></i> @Loc["Plugins.Widgets.TicketSystem.Ticket.Notes"]
+            </h5>
+        </div>
+        <div class="card-body">
+            @if (Model.TicketNotes.Count > 0)
+            {
+                <div class="ticket-notes mb-4">
+                    @foreach (var note in Model.TicketNotes)
+                    {
+                        <div class="ticket-note card mb-3 @(note.DisplayToCustomer ? "border-success" : "")">
+                            <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong><i class="fa fa-user mr-2"></i>@note.CreatedByName</strong>
+                                    <small class="text-muted ml-2"><i class="fa fa-clock mr-1"></i>@note.CreatedOn</small>
+                                    @if (note.DisplayToCustomer)
+                                    {
+                                        <span class="badge badge-success ml-2">
+                                            <i class="fa fa-eye mr-1"></i>@Loc["Plugins.Widgets.TicketSystem.Ticket.Fields.DisplayToCustomer"]
+                                        </span>
+                                    }
+                                </div>
+                                <div>
+                                    <button type="button" onclick="deleteNote('@note.Id', '@Model.Id');" class="btn btn-sm btn-danger">
+                                        <i class="fa fa-trash"></i> @Loc["Admin.Common.Delete"]
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                @Html.Raw(note.Note)
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    <i class="fa fa-info-circle mr-2"></i>@Loc["Plugins.Widgets.TicketSystem.Ticket.Notes.NoNotes"]
+                </div>
+            }
+            
+            <div class="card">
+                <div class="card-header bg-light">
+                    <h6 class="mb-0">
+                        <i class="fa fa-plus-circle"></i> @Loc["Plugins.Widgets.TicketSystem.Ticket.AddNote"]
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <textarea asp-for="AddNote" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="AddNote" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input asp-for="DisplayToCustomer" class="form-check-input" />
+                            <label class="form-check-label" for="@Html.IdFor(m => m.DisplayToCustomer)">
+                                @Loc["Plugins.Widgets.TicketSystem.Ticket.Fields.DisplayToCustomer"]
+                            </label>
+                        </div>
+                        <small class="form-text text-muted">
+                            @Loc["Plugins.Widgets.TicketSystem.Ticket.Fields.DisplayToCustomer.Hint"]
+                        </small>
+                        <span asp-validation-for="DisplayToCustomer" class="text-danger"></span>
+                    </div>
+                    <div class="form-group text-right">
+                        <button type="submit" name="save" class="btn btn-primary">
+                            <i class="fa fa-save"></i> @Loc["Admin.Common.Save"]
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    function deleteNote(noteId, ticketId) {
+        if (confirm('@Loc["Plugins.Widgets.TicketSystem.Ticket.Note.DeleteConfirmation"]')) {
+            var postData = {
+                id: noteId,
+                ticketId: ticketId
+            };
+            addAntiForgeryToken(postData);
+            $.ajax({
+                cache: false,
+                type: "POST",
+                url: "@(Url.Action("DeleteNote", "TicketSystem"))",
+                data: postData,
+                success: function(data) {
+                    location.reload();
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    alert('Failed to delete note.');
+                }
+            });
+        }
+    }
+</script> 

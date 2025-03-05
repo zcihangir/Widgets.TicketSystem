@@ -1,0 +1,144 @@
+@model Widgets.TicketSystem.Models.ConfigurationModel
+@{
+    Layout = "_ConfigurePlugin";
+}
+
+<form asp-controller="TicketSystem" asp-action="Configure" method="post">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="x_panel light form-fit">
+                <div class="x_title">
+                    <div class="caption">
+                        <i class="fa fa-cog"></i>
+                        @Loc["Plugins.Widgets.TicketSystem.Configuration"]
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group btn-group-devided">
+                            <button class="btn btn-success" type="submit" name="save"><i class="fa fa-check"></i> @Loc["Admin.Common.Save"] </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="x_content form">
+                    <div class="form-horizontal">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <admin-label asp-for="Enable" />
+                                <div class="col-md-9 col-sm-9">
+                                    <label class="mt-checkbox mt-checkbox-outline control control-checkbox">
+                                        <admin-input asp-for="Enable" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                    <span asp-validation-for="Enable"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <admin-label asp-for="DisplayOrder" />
+                                <div class="col-md-9 col-sm-9">
+                                    <admin-input asp-for="DisplayOrder" />
+                                    <span asp-validation-for="DisplayOrder"></span>
+                                </div>
+                            </div>
+                          
+                            <div class="form-group">
+                                <admin-label asp-for="LimitedToGroups" />
+                                <div class="col-md-9 col-sm-9">
+                                    <label class="mt-checkbox mt-checkbox-outline control control-checkbox">
+                                        <admin-input asp-for="LimitedToGroups" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                    <span asp-validation-for="LimitedToGroups"></span>
+                                </div>
+                            </div>
+                            <div class="form-group" id="pnl-available-customer-groups">
+                                <div class="col-md-9 col-sm-9 offset-md-3">
+                                    <admin-select asp-for="SelectedCustomerGroupIds" asp-items="@(new MultiSelectList(ViewBag.AvailableCustomerGroups, "Value", "Text", Model.SelectedCustomerGroupIds))" multiple="multiple" />
+                                    <span asp-validation-for="SelectedCustomerGroupIds"></span>
+                                </div>
+                            </div>
+                           
+        
+                            
+                            <div class="form-group">
+                                <admin-label asp-for="SendEmailNotification" />
+                                <div class="col-md-9 col-sm-9">
+                                    <label class="mt-checkbox mt-checkbox-outline control control-checkbox">
+                                        <admin-input asp-for="SendEmailNotification" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                    <span asp-validation-for="SendEmailNotification"></span>
+                                </div>
+                            </div>
+                            <div class="form-group" id="pnl-notification-email">
+                                <admin-label asp-for="NotificationEmail" />
+                                <div class="col-md-9 col-sm-9">
+                                    <admin-input asp-for="NotificationEmail" />
+                                    <span asp-validation-for="NotificationEmail"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <admin-label asp-for="ShowTicketListInCustomerAccount" />
+                                <div class="col-md-9 col-sm-9">
+                                    <label class="mt-checkbox mt-checkbox-outline control control-checkbox">
+                                        <admin-input asp-for="ShowTicketListInCustomerAccount" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                    <span asp-validation-for="ShowTicketListInCustomerAccount"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <admin-label asp-for="ShowTicketOptionOnProductPage" />
+                                <div class="col-md-9 col-sm-9">
+                                    <label class="mt-checkbox mt-checkbox-outline control control-checkbox">
+                                        <admin-input asp-for="ShowTicketOptionOnProductPage" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                    <span asp-validation-for="ShowTicketOptionOnProductPage"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <admin-label asp-for="ShowTicketOptionOnOrderDetailsPage" />
+                                <div class="col-md-9 col-sm-9">
+                                    <label class="mt-checkbox mt-checkbox-outline control control-checkbox">
+                                        <admin-input asp-for="ShowTicketOptionOnOrderDetailsPage" />
+                                        <div class="control__indicator"></div>
+                                    </label>
+                                    <span asp-validation-for="ShowTicketOptionOnOrderDetailsPage"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function() {
+        
+        
+        $("#@Html.IdFor(model => model.LimitedToGroups)").click(toggleCustomerGroupRestriction);
+        toggleCustomerGroupRestriction();
+        
+        $("#@Html.IdFor(model => model.SendEmailNotification)").click(toggleNotificationEmail);
+        toggleNotificationEmail();
+    });
+    
+
+    
+    function toggleCustomerGroupRestriction() {
+        if ($('#@Html.IdFor(model => model.LimitedToGroups)').is(':checked')) {
+            $('#pnl-available-customer-groups').show();
+        } else {
+            $('#pnl-available-customer-groups').hide();
+        }
+    }
+    
+    function toggleNotificationEmail() {
+        if ($('#@Html.IdFor(model => model.SendEmailNotification)').is(':checked')) {
+            $('#pnl-notification-email').show();
+        } else {
+            $('#pnl-notification-email').hide();
+        }
+    }
+</script> 

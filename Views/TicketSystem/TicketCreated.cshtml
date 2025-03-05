@@ -1,0 +1,21 @@
+@{
+    Layout = "_SingleColumn";
+    ViewBag.Title = Loc["Plugins.Widgets.TicketSystem.TicketCreated.Title"];
+}
+
+
+<div class="page account-page ticket-created-page">
+    <h1 class="h2 generalTitle">@Loc["Plugins.Widgets.TicketSystem.TicketCreated.Title"]</h1>
+    
+    <div class="page-body">
+        <div class="alert alert-success">
+            @Loc["Plugins.Widgets.TicketSystem.TicketCreated.Message"]
+        </div>
+        
+        <div class="buttons">
+            <a href="@Url.Action("CustomerTickets", "TicketSystem")" class="btn btn-primary">
+                @Loc["Plugins.Widgets.TicketSystem.TicketCreated.ViewTickets"]
+            </a>
+        </div>
+    </div>
+</div> 

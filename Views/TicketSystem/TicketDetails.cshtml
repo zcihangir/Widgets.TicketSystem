@@ -1,0 +1,145 @@
+@model CustomerTicketDetailsModel
+@using Widgets.TicketSystem.Models
+
+@{
+    Layout = "_SingleColumn";
+    ViewBag.Title = Loc["Plugins.Widgets.TicketSystem.TicketDetails.Title"];
+}
+
+<div class="page account-page ticket-details-page">
+    <h1 class="h2 generalTitle">@Loc["Plugins.Widgets.TicketSystem.TicketDetails.Title"]</h1>
+    
+    <div class="page-body">
+        <div class="ticket-info">
+            <div class="row mb-3">
+                <div class="col-md-8">
+                    <h3>@Model.Subject</h3>
+                </div>
+                <div class="col-md-4 text-right">
+                    <a href="@Url.Action("CustomerTickets", "TicketSystem")" class="btn btn-secondary">
+                        <b-icon icon="arrow-left"></b-icon> @Loc["Plugins.Widgets.TicketSystem.TicketDetails.BackToList"]
+                    </a>
+                </div>
+            </div>
+            
+            <div class="ticket-details card mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>@Loc["Plugins.Widgets.TicketSystem.TicketDetails.Department"]</label>
+                                <div><strong>@Model.Department</strong></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>@Loc["Plugins.Widgets.TicketSystem.TicketDetails.Status"]</label>
+                                <div>
+                                    @{
+                                        string statusClass = "badge-secondary";
+                                        if (Model.Status == "Open") { statusClass = "badge-success"; }
+                                        else if (Model.Status == "Processing") { statusClass = "badge-warning"; }
+                                        else if (Model.Status == "Closed") { statusClass = "badge-danger"; }
+                                    }
+                                    <span class="badge @statusClass">@Model.Status</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>@Loc["Plugins.Widgets.TicketSystem.TicketDetails.Priority"]</label>
+                                <div>
+                                    @{
+                                        string priorityClass = "badge-secondary";
+                                        if (Model.Priority == "High") { priorityClass = "badge-danger"; }
+                                        else if (Model.Priority == "Normal") { priorityClass = "badge-info"; }
+                                        else if (Model.Priority == "Low") { priorityClass = "badge-success"; }
+                                    }
+                                    <span class="badge @priorityClass">@Model.Priority</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label>@Loc["Plugins.Widgets.TicketSystem.TicketDetails.CreatedOn"]</label>
+                                <div><strong>@Model.CreatedOn</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ticket-message mb-4">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5><b-icon icon="chat-left-text"></b-icon> @Loc["Plugins.Widgets.TicketSystem.TicketDetails.Message"]</h5>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <small>@Model.CreatedOn</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @Html.Raw(Model.Message)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ticket-notes mb-4">
+                <h4><b-icon icon="chat-dots"></b-icon> @Loc["Plugins.Widgets.TicketSystem.TicketDetails.Conversation"]</h4>
+                
+                @if (Model.Notes.Count > 0)
+                {
+                    foreach (var note in Model.Notes)
+                    {
+                        <div class="card mb-3">
+                            <div class="card-header @(note.IsStaffNote ? "bg-light" : "bg-info text-white")">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <strong>@note.CreatedByName</strong>
+                                        @if (note.IsStaffNote)
+                                        {
+                                            <span class="badge badge-primary ml-2">@Loc["Plugins.Widgets.TicketSystem.TicketDetails.Staff"]</span>
+                                        }
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <small>@note.CreatedOn</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                @Html.Raw(note.Note)
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-info">
+                        <b-icon icon="info-circle"></b-icon> @Loc["Plugins.Widgets.TicketSystem.TicketDetails.NoNotes"]
+                    </div>
+                }
+            </div>
+            
+            <div class="ticket-reply">
+                <h4><b-icon icon="reply"></b-icon> @Loc["Plugins.Widgets.TicketSystem.TicketDetails.Reply"]</h4>
+                
+                <form asp-controller="TicketSystem" asp-action="AddTicketReply" method="post">
+                    <input type="hidden" name="TicketId" value="@Model.Id" />
+                    
+                    <div class="form-group">
+                        <textarea name="Message" class="form-control" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            <b-icon icon="send"></b-icon> @Loc["Plugins.Widgets.TicketSystem.TicketDetails.SendReply"]
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 

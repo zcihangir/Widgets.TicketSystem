@@ -1,0 +1,20 @@
+@{
+    Layout = "_SingleColumn";
+    ViewBag.Title = Loc["Plugins.Widgets.TicketSystem.ContactFormSubmitted.Title"];
+}
+
+<div class="page contact-form-submitted-page">
+    <h1 class="h2 generalTitle">@Loc["Plugins.Widgets.TicketSystem.ContactFormSubmitted.Title"]</h1>
+    
+    <div class="page-body">
+        <div class="alert alert-success">
+            @Loc["Plugins.Widgets.TicketSystem.ContactFormSubmitted.Message"]
+        </div>
+        
+        <div class="buttons">
+            <a href="@Url.RouteUrl("HomePage")" class="btn btn-primary">
+                @Loc["Plugins.Widgets.TicketSystem.ContactFormSubmitted.Continue"]
+            </a>
+        </div>
+    </div>
+</div> 

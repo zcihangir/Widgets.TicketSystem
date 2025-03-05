@@ -1,0 +1,38 @@
+@model TicketModel
+@using Widgets.TicketSystem.Models
+
+@{
+    //page title
+    ViewBag.Title = Loc["Plugins.Widgets.TicketSystem.Ticket.Create"];
+}
+
+<form asp-controller="TicketSystem" asp-action="Create" method="post">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                    <div>
+                        <h5 class="mb-0 d-inline-block">
+                            <i class="fa fa-ticket-alt"></i>
+                            @Loc["Plugins.Widgets.TicketSystem.Ticket.Create"]
+                        </h5>
+                        <a href="@Url.Action("List")" class="btn btn-sm btn-outline-secondary ml-2">
+                            <i class="fa fa-arrow-left"></i> @Loc["Plugins.Widgets.TicketSystem.Ticket.BackToList"]
+                        </a>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-success" type="submit" name="save">
+                            <i class="fa fa-check"></i> @Loc["Admin.Common.Save"]
+                        </button>
+                        <button class="btn btn-info" type="submit" name="save-continue">
+                            <i class="fa fa-check-circle"></i> @Loc["Admin.Common.SaveContinue"]
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <partial name="_CreateOrUpdate" model="Model" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form> 
